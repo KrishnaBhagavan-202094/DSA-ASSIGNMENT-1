@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int row,column,i,j,element,flag=0;
+    cout<<"Required rows and columns of array ";
+    cin>>row>>column;
+    int Ar[row][column];
+    cout<<"Array is "<<endl;
+    for(i=0;i<row;i++){
+        for(j=0;j<column;j++){
+            cin>>Ar[i][j];
+        }
+    }
+    cout<<"Element to be found ";
+    cin>>element;
+    for(i=0;i<row;i++){
+        for(j=0;j<column;j++){
+            if(element==Ar[i][j]){
+            	flag=1;
+                cout<<"Element found in array at "<<i<<","<<j<<" location"<<endl;
+                break;
+            }
+        }
+    }
+    if(flag==0){
+        cout<<"element not found";
+    }
+    return 0;
+}
