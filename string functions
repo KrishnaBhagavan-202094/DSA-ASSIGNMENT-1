@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+int length(string str){
+    int i=0;
+    while(str[i]!='\0'){
+        i++;
+    }
+    return i;
+}
+string concat(string str1,string str2){
+    int i,j;
+    string str3;
+    str3=str1+str2;
+    return str3;
+}
+string rever(string str){
+    string revstr;
+    int len,i,j;
+    len=length(str);
+    for(i=len-1;i>=0;i--){
+            revstr[i]=str[(len-1)-i];
+        }
+    return revstr;
+}
+int main()
+{
+    string s1,s2,c,d,e,f;
+    int i,a,b;
+    cout<<"Enter first string:";
+    cin>>s1;
+    cout<<"Enter second string:";
+    cin>>s2;
+    cout<<"\nChoose the string operation,\n";
+    cout<<"1. length\n";
+    cout<<"2. concatination\n";
+    cout<<"3. copy\n";
+    cout<<"4. reversing\n";
+    cout<<"Enter code:";
+    cin>>i;
+    switch(i){
+        case 1:
+        a=length(s1);
+        b=length(s2);
+        cout<<"Length of strings are "<<a<<" and "<<b<<" respectively";
+        break;
+        case 2:
+        c=concat(s1,s2);
+        cout<<"Concatenation of two strings is "<<c;
+        break;
+        case 3:
+        d=rever(s1);
+        e=rever(s2);
+        cout<<"Reverse of strings is "<<d<<" and "<<e<<" respectively";
+        break;
+        case 4:
+       f=s1;
+       s1=s2;
+       s2=f;
+        cout<<"Copying both strings into each other "<<s1<<" and "<<s2<<" respectively";
+        break;
+        default:
+        cout<<"Enter correct code";
+    }
+    return 0;
+}
