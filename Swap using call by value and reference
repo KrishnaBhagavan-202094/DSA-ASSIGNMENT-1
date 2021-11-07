@@ -1,0 +1,34 @@
+#include <stdio.h>
+void valueswap(int ,int );
+void referenceswap(int *, int *);
+int main()
+{
+    int num1,num2;
+    printf("Enter two numbers: ");
+    scanf("%d%d", &num1, &num2);
+    printf("Before swapping:\n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n", num2);
+    valueswap(num1,num2);
+    referenceswap(&num1, &num2);
+    printf("After swapping by call by reference:\n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n", num2);
+    return 0;
+}
+void valueswap(int num1,int num2){
+    int temp;
+    temp=num1;
+    num1=num2;
+    num2=temp;
+    printf("After swapping by call by value:\n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n", num2);
+}
+void referenceswap(int* num1,int* num2)
+{
+    int temp;
+    temp = *num1;
+    *num1= *num2;
+    *num2= temp;
+}
