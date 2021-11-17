@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+void valueswap(int ,int );
+void referenceswap(int *, int *);
+int main()
+{
+    int num1,num2;
+    cout<<"Enter two numbers: "<<endl;
+    cin>>num1>>num2;
+    cout<<"Before swapping:\n";
+    cout<<"Value of num1 ="<<num1<<endl;
+    cout<<"Value of num2 ="<<num2<<endl;
+    valueswap(num1,num2);
+    referenceswap(&num1, &num2);
+    return 0;
+}
+void valueswap(int num1,int num2){
+    int temp;
+    temp=num1;
+    num1=num2;
+    num2=temp;
+    cout<<"After swapping by call by value:\n";
+    cout<<"Value of num1 ="<<num1<<endl;
+    cout<<"Value of num2 ="<<num2<<endl;
+}
+void referenceswap(int* num1,int* num2)
+{
+    int temp;
+    temp = *num1;
+    *num1= *num2;
+    *num2= temp;
+    cout<<"After swapping by call by reference:\n";
+    cout<<"Value of num1 ="<<*num1<<endl;
+    cout<<"Value of num2 ="<<*num2<<endl;
+}
