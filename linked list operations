@@ -1,0 +1,137 @@
+#include <iostream>
+using namespace std;
+struct Node
+{
+   int data;
+   struct Node *next;
+};
+void insert(struct Node* prev_node, int node_data)
+{
+if (prev_node == NULL)
+{
+   cout<<"the given previous node is required,cannot be NULL"; return; } 
+   struct Node* newNode =new Node; 
+   newNode->data = node_data;
+   newNode->next = prev_node->next;
+    prev_node->next = newNode;
+}
+void append(struct Node** head, int node_data)
+{
+struct Node* newNode = new Node;
+struct Node *last = *head; 
+newNode->data = node_data;
+newNode->next = NULL;
+if (*head == NULL)
+{
+*head = newNode;
+return;
+}
+while (last->next != NULL)
+last = last->next;
+last->next = newNode;
+return;
+}
+void display(struct Node *node)
+{
+   while (node != NULL)
+   {
+      cout<<node->data<<"-->";
+      node = node->next;
+   }
+if(node== NULL)
+cout<<"null"; 
+}
+Node* deleteNode(struct Node* head, int value)
+{
+   if (head == NULL)
+   return NULL;
+ 
+   Node * temp = head;
+   Node * previous = NULL;
+   while(temp != NULL && temp->data != value){
+       previous = temp;
+       temp = temp->next;
+   }
+   if(temp == head){
+       head = head->next;
+       cout<<head->data<<endl;
+      delete temp;
+       return head;
+   }
+   previous->next = temp->next;
+   delete temp;
+ 
+   return head;
+}
+Node* update(Node * head, int oldValue,int newValue){
+    Node * temp = head;
+    while(temp != NULL && temp->data != oldValue){
+        temp = temp->next;
+    }
+    temp->data = newValue;
+    return head;
+}
+Node * reverse(Node * head){
+    Node * temp = head;
+    Node * previous = NULL;
+    Node * next = NULL;
+    while(temp != NULL){
+        next = temp->next;
+        temp->next = previous;
+        previous = temp;
+        temp = next;
+    }
+    head = previous;
+    return head;
+}
+int main() 
+{ 
+struct Node* head = NULL; 
+int choice,value,position,newValue;
+append(&head, 14);
+append(&head, 35);
+append(&head, 70);
+append(&head, 7);
+append(&head, 91);
+while(choice != 5){
+cout<<endl<<"Select a operation to perform: "<<endl<<"1.Insert"<<endl<<"2.Delete"<<endl<<"3.Update"<<endl<<"4.Reverse"<<endl;
+cout<<"Current linked list: "<<endl;
+display(head);
+cout<<endl;
+cout<<"Your Choice: ";
+cin>>choice;
+switch(choice){
+    case 1:
+    {
+        cout<<"Enter the value after which you want to insert the value: ";
+        cin>>position;
+        Node * cur = head;
+        while(cur->data != position)cur = cur->next;
+        cout<<"Enter the value: ";
+        cin>>value;
+        insert(cur,value);
+        break;
+    }
+    case 2:
+        cout<<"Enter value to delete: ";
+        cin>>value;
+        head = deleteNode(head,value);
+        break;
+    case 3:
+        cout<<"Enter value which you want to update: ";
+        cin>>value;
+        cout<<"Enter new value: ";
+        cin>>newValue;
+        update(head,value,newValue);
+        break;
+    case 4:
+        cout<<"Reversing the linked list."<<endl;
+        head = reverse(head);
+        break;
+    default:
+        cout<<"Enter a valid choice."<<endl;
+        break;
+}
+}
+return 0;
+}
