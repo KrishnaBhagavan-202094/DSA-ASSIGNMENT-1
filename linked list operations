@@ -45,7 +45,6 @@ Node* deleteNode(struct Node* head, int value)
 {
    if (head == NULL)
    return NULL;
- 
    Node * temp = head;
    Node * previous = NULL;
    while(temp != NULL && temp->data != value){
@@ -60,7 +59,6 @@ Node* deleteNode(struct Node* head, int value)
    }
    previous->next = temp->next;
    delete temp;
- 
    return head;
 }
 Node* update(Node * head, int oldValue,int newValue){
